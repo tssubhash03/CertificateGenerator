@@ -5,6 +5,7 @@ import {Canvas,Rect,Circle} from 'fabric';
 import {IconButton} from 'blocksin-system';
 import {CircleIcon, SquareIcon} from 'sebikostudio-icons';
 import Settings from "./Settings";
+import Video from "./Video";
 
 function App() {
   const canvasRef = useRef(null); //This References to canva element ,can manipulate the canva's Things in DOM.Useref is hook
@@ -59,6 +60,7 @@ function App() {
         <IconButton onClick={addCircle} variant = "ghost" size="medium">
           <CircleIcon/> 
         </IconButton>
+        <Video canvas={canvas} canvasRef={canvasRef} />
       </div>
       <canvas id ="canvas" ref={canvasRef}></canvas>
       <Settings canvas={canvas}/>
