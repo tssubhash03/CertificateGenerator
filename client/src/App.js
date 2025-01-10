@@ -7,11 +7,13 @@ import {CircleIcon, SquareIcon} from 'sebikostudio-icons';
 import Settings from "./Settings";
 // import Video from "./Video";
 import CanvasSettings from "./CanvasSettings";
+import { handleObjectMoving,clearGuidelines } from "./snappingHelpers";
 
 function App() {
   const canvasRef = useRef(null); //This References to canva element ,can manipulate the canva's Things in DOM.Useref is hook
   const [canvas,setCanvas] = useState(null);//Another hook for tracking values change in canva.
   //Upto here Canva is not initialized or setup then later update the State hook .
+  const [guidelines,setGuidelines] = useState([]);//Another hook for tracking values change in guidelines.
 
   useEffect(()=>{//Runs once when the component is mounted
       if(canvasRef.current){
@@ -23,8 +25,18 @@ function App() {
         initCanvas.renderAll();
 
         setCanvas(initCanvas);
+
+        initCanvas.on('object:moving',(event)=>{
+          handleObjectMoving(initCanvas,event.target,guidelines,setGuidelines);
+        }
+        );
+        initCanvas.on('object:modified',()=>{
+          clearGuidelines(initCanvas,guidelines,setGuidelines);
+        }
+        );
         return () =>{
           initCanvas.dispose();// If this page move to previous page clear the memory of this page 
+
         }
       }
   },[])
