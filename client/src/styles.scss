@@ -43,7 +43,7 @@ body{
         display :none;
     }
 }
-.Settings{
+.SettingsWrapper{
     position: fixed;
     right: 16px;
     top: 50%;
@@ -51,7 +51,7 @@ body{
     gap: 8px;
     display: flex;
     flex-direction: column;
-    background-color: var(--background-neutral-container);
+    background-color:#282a34;
     padding: 24px 8px;
     border-radius: 4px;
     text-align: left;
