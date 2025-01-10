@@ -4,6 +4,8 @@ import React ,{useEffect, useRef,useState} from "react"; //Allowing Fabric.js ac
 import {Canvas,Rect,Circle} from 'fabric';
 import {IconButton} from 'blocksin-system';
 import {CircleIcon, SquareIcon} from 'sebikostudio-icons';
+import Settings from "./Settings";
+
 function App() {
   const canvasRef = useRef(null); //This References to canva element ,can manipulate the canva's Things in DOM.Useref is hook
   const [canvas,setCanvas] = useState(null);//Another hook for tracking values change in canva.
@@ -59,6 +61,7 @@ function App() {
         </IconButton>
       </div>
       <canvas id ="canvas" ref={canvasRef}></canvas>
+      <Settings canvas={canvas}/>
     </div>
   );
 }
