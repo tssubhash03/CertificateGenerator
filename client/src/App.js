@@ -8,6 +8,7 @@ import Settings from "./Settings";
 // import Video from "./Video";
 import CanvasSettings from "./CanvasSettings";
 import { handleObjectMoving,clearGuidelines } from "./snappingHelpers";
+import undoRedoHelpers from "./undoRedoHelpers";
 
 function App() {
   const canvasRef = useRef(null); //This References to canva element ,can manipulate the canva's Things in DOM.Useref is hook
@@ -79,6 +80,8 @@ function App() {
       <div className="SettingsWrapper">
         <CanvasSettings canvas = {canvas}/>
         <Settings canvas = {canvas}/>
+        <undoRedoHelpers canvas = {canvas}/>
+
       </div>
     </div>
   );
